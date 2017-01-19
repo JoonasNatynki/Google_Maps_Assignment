@@ -1,12 +1,21 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<title>Placeholder</title>
-</head>
+  <head>
+    <style>
+      #map {
+        height: 600px;
+        width: 100%;
+       }
+    </style>
+  </head>
+  <body>
+    <h3>Google Maps Assignment</h3>
+    <div id="map"></div>
+    
+    <script src="Scripts.js"></script>
 
-<body>
-Google Maps
-</body>
-
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCsDT7cs3R__aM59GvOa7SRtAUZli3KOJg&callback=initMap">
+    </script>
+  </body>
 </html>
