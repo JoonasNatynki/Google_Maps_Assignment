@@ -3,21 +3,47 @@
 
 let currentImage;
 const imageContainer = document.getElementById("imagecontainer");
+var index = 0;
 
 document.getElementById("nextbutton").addEventListener('click', nextClick);
+document.getElementById("previousbutton").addEventListener('click', previousClick);
 
 function nextClick (value)
 {
-    let x = 0;
-    $('#imagecontainer').children().each(function(element)
-    {
-        console.log($('#imagecontainer').children()[x]);
-        console.log(currentImage);
-        x++;
-    });
+    var slideContainer = $("#imagecontainer");
+    var listItem = slideContainer.children("img");
+    var listLenght = listItem.length;
+
+    listItem.eq(index).fadeOut(300, function()
+                                            {
+                                                index++;
+                                                if (index === listLenght)
+                                                {
+                                                    index = 0;
+                                                }
+                                                listItem.eq(index).fadeIn(300);
+                                            });
+}
+
+function previousClick (value)
+{
+    var slideContainer = $("#imagecontainer");
+    var listItem = slideContainer.children("img");
+    var listLenght = listItem.length;
+
+    listItem.eq(index).fadeOut(300, function()
+                                            {
+                                                index--;
+                                                if (index === listLenght)
+                                                {
+                                                    index = 0;
+                                                }
+                                                listItem.eq(index).fadeIn(300);
+                                            });
 }
 
 addImage("1.png");
+addImage("2.jpg");
 addImage("1.png");
 
 function addImage(urli)
