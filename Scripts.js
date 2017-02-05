@@ -1,7 +1,9 @@
-var googleMap;
-function initMap() 
+let googleMap;
+let markers = [];
+let wikipediaMarkers = [];
+function initMap()
 {
-        var defaultCoord = {lat: 60.220859, lng: 24.805229};
+        let defaultCoord = {lat: 60.220859, lng: 24.805229};
         googleMap = new google.maps.Map(
             document.getElementById('map'), 
             {
@@ -9,10 +11,24 @@ function initMap()
             center: defaultCoord
             }
         );
-        var marker = new google.maps.Marker({
+        let marker = new google.maps.Marker(
+          {
           position: defaultCoord,
-          map: googleMap
-        });
+          map: googleMap,
+          });
+        markers.push(marker);
+}
+
+document.getElementById('clearmarkers').addEventListener('click', clearMarkers);
+
+function clearMarkers(array)
+{
+  array.forEach(deleteMarkers);
+}
+
+function deleteMarkers(item, index, arr)
+{
+  item.setMap(null);
 }
 
 initMap();
